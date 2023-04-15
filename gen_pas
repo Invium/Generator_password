@@ -1,0 +1,35 @@
+import random
+print('Генератор безопасных паролей')
+digits = '0123456789'
+lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
+uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+punctuation = '!#$%&*+-=?@^_'
+chars = ''
+n = int(input('Введите количество паролей для генерации: '))
+len_pass = int(input('Введите длину пароля: '))
+num = input('Включить цифры? (д = да, н = нет) ').strip()
+upp_lett = input('Включить прописные буквы ABCDEFGHIJKLMNOPQRSTUVWXYZ? (д = да, н = нет) ').strip()
+low_lett = input('Включить строчные буквы abcdefghijklmnopqrstuvwxyz? (д = да, н = нет) ').strip()
+sym = input('Включать ли символы !#$%&*+-=?@^_ ? (д = да, н = нет) ').strip()
+bad_sym = input('Исключать ли неоднозначные символы il1Lo0O ? (д = да, н = нет) ').strip()
+
+if num == 'д':
+    chars += digits
+if upp_lett == 'д':
+    chars += uppercase_letters
+if low_lett == 'д':
+    chars +=lowercase_letters
+if sym == 'д':
+    chars += punctuation
+if bad_sym == 'д':
+    for c in 'il1Lo0O':
+        chars = chars.replace(c,'')
+def generate_password(len_pass,chars):
+    password = ''
+    for j in range (len_pass):
+        password += random.choice(chars)
+    print(password)
+    return
+for x in range(n-1):
+    generate_password(len_pass,chars)
+generate_password(len_pass, chars)
